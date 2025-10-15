@@ -3,48 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Fixed Background</title>
+    <title>Modern Profile Layout</title>
     <!-- Load Tailwind CSS from CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Custom style to apply Verdana font and the fixed background image -->
+    <!-- Load custom fonts from Google Fonts: Orbitron for the tagline, Inter for the body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    
+    <!-- Custom style for the black and white image effect and font setup -->
     <style>
-        /* Apply Verdana (a common system font) and background properties */
+        /* Configure Tailwind to use Inter and apply global light background */
         body {
-            font-family: Verdana, sans-serif;
-            
-            /* Background Image Properties */
-            background-image: url('assets/BG.jpg');
-            background-size: cover;          /* Ensure the image covers the whole viewport */
-            background-repeat: no-repeat;    /* Prevent image tiling */
-            background-attachment: fixed;    /* This makes the background "stick" as you scroll */
-            background-position: center center; /* Center the image */
-            background-color: #2563eb;       /* Fallback color if the image doesn't load */
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff; 
+            /* CRITICAL: Set body height to 100% of viewport to allow fixed scrolling */
+            height: 100vh;
+            overflow: hidden; /* Prevent body scroll */
+        }
+        
+        /* Custom class to apply the stylized font to the tagline */
+        .tagline-font {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: -0.05em; 
+            line-height: 1.1;
+        }
 
-            /* Setup for centering the content on the screen */
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            overflow-y: scroll; /* Ensures scrolling is possible if content is later added */
+        /* Custom class for the top background section */
+        .profile-hero {
+            /* Adjust height for a better sticky visualization */
+            height: 40vh; 
+            width: 100%;
+            background-image: url('https://placehold.co/1200x600/1f2937/ffffff?text=Background+Image+Placeholder');
+            background-size: cover;
+            background-position: center; 
+            background-repeat: no-repeat;
+            filter: grayscale(100%);
+        }
+        
+        /* Style for the job title links */
+        .job-link {
+            display: block; 
+            color: #4b5563; 
+            transition: color 0.15s;
+            text-decoration: none; 
+        }
+        .job-link:hover {
+            color: #2563eb; 
+            text-decoration: underline; 
+        }
+        
+        /* Custom scrollbar for better aesthetics, especially in the content area */
+        .custom-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background-color: #d1d5db; /* light gray */
+            border-radius: 4px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background-color: #f3f4f6; /* very light gray */
         }
     </style>
 </head>
-<body class="p-4">
-    <!-- The content container is centered and styled with large, bold text -->
-    <!-- We use bg-white/80 for a slightly transparent white background for better readability over the image -->
-    <div class="text-4xl font-bold text-gray-800 tracking-wider bg-white/80 p-10 rounded-2xl shadow-2xl border border-gray-200 backdrop-blur-sm">
-        Test 123
-    </div>
+<body class="min-h-screen">
 
-    <!-- Adding extra content here so you can test the fixed background scrolling effect -->
-    <div class="absolute top-0 left-0 w-full pt-[100vh] pb-[50vh]">
-        <div class="max-w-xl mx-auto text-center bg-black/70 text-white p-6 rounded-xl mt-20">
-            <h2 class="text-2xl font-sans mb-4">Scroll Down to Test the Fixed Background!</h2>
-            <p class="text-sm">Since the background is fixed, the text above will scroll over the image, but the image itself will remain stationary.</p>
+    <!-- 1. HEADER SECTION: Fixed at the top -->
+    <!-- Removed sticky classes so the header stays permanently visible at the top -->
+    <header class="flex items-start justify-between max-w-7xl mx-auto px-6 sm:px-10 pt-10 bg-white">
+        <!-- Left Side: Large Text/Tagline -->
+        <div class="w-full md:w-1/3 pr-8">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tighter text-gray-900 tagline-font mb-8">
+                Tagline
+            </h1>
+        </div>
+        
+        <!-- Right Side: Background Image Area -->
+        <div class="hidden md:block profile-hero md:w-2/3 shadow-xl rounded-xl">
+            <!-- The image is set via CSS background-image property -->
+        </div>
+    </header>
+
+    <!-- 2. CONTENT CONTAINER: Fixed height and internal scrolling enabled on the right -->
+    <!-- h-screen is required to ensure the container takes full viewport height below the header. 
+         mt-4 adds spacing between the header and the content grid. -->
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 mt-4 grid grid-cols-1 md:grid-cols-3 gap-8" 
+         style="height: calc(100vh - 40vh - 6rem);"> 
+         <!-- Height calculation: 100vh - (Header height estimate: 40vh) - (Padding/Margin estimate: 6rem) -->
+        
+        <!-- Column 1: Navigation/Quick Links - Fixed Position (No scrolling) -->
+        <!-- This column is fixed within the parent container's visible area. -->
+        <div class="col-span-1 text-gray-700 text-sm space-y-2 self-start">
+            <p class="font-bold mb-4 text-xs tracking-widest text-gray-500 uppercase">Current Roles</p>
+            
+            <!-- Job Links -->
+            <a href="#wfm-analyst" class="job-link">Workforce Management Analyst</a>
+            <a href="#seo-manager" class="job-link">SEO Account Manager</a>
+            <a href="#customer-support" class="job-link">Customer Support Specialist</a>
+            <a href="#technical-support" class="job-link">Technical Support Rep</a>
+
+            <p class="font-bold mt-8 mb-4 text-xs tracking-widest text-gray-500 uppercase">Navigation</p>
+            <a href="#education" class="job-link">Education</a>
+            <a href="#key-skills" class="job-link">Key Skills</a>
+            <a href="#contact" class="job-link">Contact</a>
+        </div>
+
+        <!-- Column 2 & 3 (Combined for main content): Name, Title, and Description - SCROLLABLE -->
+        <!-- h-full ensures it takes the height of the parent. overflow-y-auto enables scrolling. -->
+        <div class="col-span-2 text-gray-900 h-full overflow-y-auto custom-scroll pb-20">
+            <h2 class="text-2xl font-semibold mb-1">Arens Paño</h2>
+            <h3 class="text-lg text-blue-600 mb-6">Computer Engineer</h3>
+            
+            <div class="space-y-4 text-gray-700">
+                <p>
+                    Blah blah blah more text here. This right column is now the **only** section that scrolls. The header and the left navigation column remain perfectly fixed in place.
+                </p>
+                <!-- START: Filler text for scrolling demonstration -->
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <p>
+                    In vitae turpis massa sed elementum tempus egestas sed. Risus commodo viverra maecenas accumsan lacus vel facilisis. Adipiscing elit ut aliquam purus sit amet luctus. Quam quisque id diam vel quam elementum. Vestibulum lectus mauris ultrices eros. Ut sem nulla pharetra diam. Mattis pellentesque id nibh tortor id aliquet lectus.
+                </p>
+                <p>
+                    Eget dolor morbi non arcu risus quis. Morbi tempus iaculis urna id volutpat lacus laoreet non. Tincidunt vitae semper quis lectus nulla at volutpat. Sagittis nisl rhoncus mattis rhoncus urna neque. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend. Egestas egestas fringilla phasellus faucibus scelerisque. Sit amet luctus venenatis lectus.
+                </p>
+                <p>
+                    Vitae aliquet nec ullamcorper sit amet risus. Faucibus in ornare quam viverra. Amet nisl suscipit adipiscing bibendum est. At urna condimentum mattis pellentesque id nibh tortor id aliquet. Ultrices gravida dictum fusce ut. Malesuada fames ac turpis egestas integer eget aliquet.
+                </p>
+                <p>
+                    Nisi est sit amet facilisis magna. Aliquam id diam maecenas ultricies. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Nulla facilisi morbi tempus iaculis. Nibh tortor id aliquet lectus proin. Nisl purus in mollis nunc.
+                </p>
+                <p>
+                    Eget dolor morbi non arcu risus quis. Morbi tempus iaculis urna id volutpat lacus laoreet non. Tincidunt vitae semper quis lectus nulla at volutpat. Sagittis nisl rhoncus mattis rhoncus urna neque. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend. Egestas egestas fringilla phasellus faucibus scelerisque. Sit amet luctus venenatis lectus.
+                </p>
+                <p>
+                    Vitae aliquet nec ullamcorper sit amet risus. Faucibus in ornare quam viverra. Amet nisl suscipit adipiscing bibendum est. At urna condimentum mattis pellentesque id nibh tortor id aliquet. Ultrices gravida dictum fusce ut. Malesuada fames ac turpis egestas integer eget aliquet.
+                </p>
+                <p>
+                    Nisi est sit amet facilisis magna. Aliquam id diam maecenas ultricies. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Nulla facilisi morbi tempus iaculis. Nibh tortor id aliquet lectus proin. Nisl purus in mollis nunc.
+                </p>
+                <p>
+                    Final paragraph to ensure full height scrolling. Keep scrolling to see the scrollbar work!
+                </p>
+                <!-- END: Filler text for scrolling demonstration -->
+                
+                <!-- Footer/Source Credit is now inside the scrollable content -->
+                <div class="text-center text-xs text-gray-400 pt-10">
+                    <p>Written by NanoGrizz Creative Studio</p>
+                </div>
+            </div>
         </div>
     </div>
-
 </body>
 </html>
