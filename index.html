@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tailwind Fixed Background</title>
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom style to apply Verdana font and the fixed background image -->
+    <style>
+        /* Apply Verdana (a common system font) and background properties */
+        body {
+            font-family: Verdana, sans-serif;
+            
+            /* Background Image Properties */
+            background-image: url('assets/BG.jpg');
+            background-size: cover;          /* Ensure the image covers the whole viewport */
+            background-repeat: no-repeat;    /* Prevent image tiling */
+            background-attachment: fixed;    /* This makes the background "stick" as you scroll */
+            background-position: center center; /* Center the image */
+            background-color: #2563eb;       /* Fallback color if the image doesn't load */
+
+            /* Setup for centering the content on the screen */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow-y: scroll; /* Ensures scrolling is possible if content is later added */
+        }
+    </style>
 </head>
-<body>
-    test
+<body class="p-4">
+    <!-- The content container is centered and styled with large, bold text -->
+    <!-- We use bg-white/80 for a slightly transparent white background for better readability over the image -->
+    <div class="text-4xl font-bold text-gray-800 tracking-wider bg-white/80 p-10 rounded-2xl shadow-2xl border border-gray-200 backdrop-blur-sm">
+        Test 123
+    </div>
+
+    <!-- Adding extra content here so you can test the fixed background scrolling effect -->
+    <div class="absolute top-0 left-0 w-full pt-[100vh] pb-[50vh]">
+        <div class="max-w-xl mx-auto text-center bg-black/70 text-white p-6 rounded-xl mt-20">
+            <h2 class="text-2xl font-sans mb-4">Scroll Down to Test the Fixed Background!</h2>
+            <p class="text-sm">Since the background is fixed, the text above will scroll over the image, but the image itself will remain stationary.</p>
+        </div>
+    </div>
+
 </body>
 </html>
