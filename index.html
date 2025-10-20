@@ -1,160 +1,877 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Profile Layout</title>
-    <!-- Load Tailwind CSS from CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Load custom fonts from Google Fonts: Orbitron for the tagline, Inter for the body text -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-    
-    <!-- Custom style for the black and white image effect and font setup -->
-    <style>
-        /* Configure Tailwind to use Inter and apply global light background */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff; 
-            /* CRITICAL: Set body height to 100% of viewport to allow fixed scrolling */
-            height: 100vh;
-            overflow: hidden; /* Prevent body scroll */
-        }
-        
-        /* Custom class to apply the stylized font to the tagline */
-        .tagline-font {
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: -0.05em; 
-            line-height: 1.1;
-        }
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Index - iPortfolio Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-        /* Custom class for the top background section */
-        .profile-hero {
-            /* Adjust height for a better sticky visualization */
-            height: 40vh; 
-            width: 100%;
-            background-image: url('https://placehold.co/1200x600/1f2937/ffffff?text=Background+Image+Placeholder');
-            background-size: cover;
-            background-position: center; 
-            background-repeat: no-repeat;
-            filter: grayscale(100%);
-        }
-        
-        /* Style for the job title links */
-        .job-link {
-            display: block; 
-            color: #4b5563; 
-            transition: color 0.15s;
-            text-decoration: none; 
-        }
-        .job-link:hover {
-            color: #2563eb; 
-            text-decoration: underline; 
-        }
-        
-        /* Custom scrollbar for better aesthetics, especially in the content area */
-        .custom-scroll::-webkit-scrollbar {
-            width: 8px;
-        }
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-        .custom-scroll::-webkit-scrollbar-thumb {
-            background-color: #d1d5db; /* light gray */
-            border-radius: 4px;
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-        .custom-scroll::-webkit-scrollbar-track {
-            background-color: #f3f4f6; /* very light gray */
-        }
-    </style>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: iPortfolio
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Updated: Jun 29 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
-<body class="min-h-screen">
 
-    <!-- 1. HEADER SECTION: Fixed at the top -->
-    <!-- Removed sticky classes so the header stays permanently visible at the top -->
-    <header class="flex items-start justify-between max-w-7xl mx-auto px-6 sm:px-10 pt-10 bg-white">
-        <!-- Left Side: Large Text/Tagline -->
-        <div class="w-full md:w-1/3 pr-8">
-            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tighter text-gray-900 tagline-font mb-8">
-                Tagline
-            </h1>
-        </div>
-        
-        <!-- Right Side: Background Image Area -->
-        <div class="hidden md:block profile-hero md:w-2/3 shadow-xl rounded-xl">
-            <!-- The image is set via CSS background-image property -->
-        </div>
-    </header>
+<body class="index-page">
 
-    <!-- 2. CONTENT CONTAINER: Fixed height and internal scrolling enabled on the right -->
-    <!-- h-screen is required to ensure the container takes full viewport height below the header. 
-         mt-4 adds spacing between the header and the content grid. -->
-    <div class="max-w-7xl mx-auto px-6 sm:px-10 mt-4 grid grid-cols-1 md:grid-cols-3 gap-8" 
-         style="height: calc(100vh - 40vh - 6rem);"> 
-         <!-- Height calculation: 100vh - (Header height estimate: 40vh) - (Padding/Margin estimate: 6rem) -->
-        
-        <!-- Column 1: Navigation/Quick Links - Fixed Position (No scrolling) -->
-        <!-- This column is fixed within the parent container's visible area. -->
-        <div class="col-span-1 text-gray-700 text-sm space-y-2 self-start">
-            <p class="font-bold mb-4 text-xs tracking-widest text-gray-500 uppercase">Current Roles</p>
-            
-            <!-- Job Links -->
-            <a href="#wfm-analyst" class="job-link">Workforce Management Analyst</a>
-            <a href="#seo-manager" class="job-link">SEO Account Manager</a>
-            <a href="#customer-support" class="job-link">Customer Support Specialist</a>
-            <a href="#technical-support" class="job-link">Technical Support Rep</a>
+  <header id="header" class="header dark-background d-flex flex-column">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
 
-            <p class="font-bold mt-8 mb-4 text-xs tracking-widest text-gray-500 uppercase">Navigation</p>
-            <a href="#education" class="job-link">Education</a>
-            <a href="#key-skills" class="job-link">Key Skills</a>
-            <a href="#contact" class="job-link">Contact</a>
-        </div>
-
-        <!-- Column 2 & 3 (Combined for main content): Name, Title, and Description - SCROLLABLE -->
-        <!-- h-full ensures it takes the height of the parent. overflow-y-auto enables scrolling. -->
-        <div class="col-span-2 text-gray-900 h-full overflow-y-auto custom-scroll pb-20">
-            <h2 class="text-2xl font-semibold mb-1">Arens Paño</h2>
-            <h3 class="text-lg text-blue-600 mb-6">Computer Engineer</h3>
-            
-            <div class="space-y-4 text-gray-700">
-                <p>
-                    Blah blah blah more text here. This right column is now the **only** section that scrolls. The header and the left navigation column remain perfectly fixed in place.
-                </p>
-                <!-- START: Filler text for scrolling demonstration -->
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <p>
-                    In vitae turpis massa sed elementum tempus egestas sed. Risus commodo viverra maecenas accumsan lacus vel facilisis. Adipiscing elit ut aliquam purus sit amet luctus. Quam quisque id diam vel quam elementum. Vestibulum lectus mauris ultrices eros. Ut sem nulla pharetra diam. Mattis pellentesque id nibh tortor id aliquet lectus.
-                </p>
-                <p>
-                    Eget dolor morbi non arcu risus quis. Morbi tempus iaculis urna id volutpat lacus laoreet non. Tincidunt vitae semper quis lectus nulla at volutpat. Sagittis nisl rhoncus mattis rhoncus urna neque. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend. Egestas egestas fringilla phasellus faucibus scelerisque. Sit amet luctus venenatis lectus.
-                </p>
-                <p>
-                    Vitae aliquet nec ullamcorper sit amet risus. Faucibus in ornare quam viverra. Amet nisl suscipit adipiscing bibendum est. At urna condimentum mattis pellentesque id nibh tortor id aliquet. Ultrices gravida dictum fusce ut. Malesuada fames ac turpis egestas integer eget aliquet.
-                </p>
-                <p>
-                    Nisi est sit amet facilisis magna. Aliquam id diam maecenas ultricies. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Nulla facilisi morbi tempus iaculis. Nibh tortor id aliquet lectus proin. Nisl purus in mollis nunc.
-                </p>
-                <p>
-                    Eget dolor morbi non arcu risus quis. Morbi tempus iaculis urna id volutpat lacus laoreet non. Tincidunt vitae semper quis lectus nulla at volutpat. Sagittis nisl rhoncus mattis rhoncus urna neque. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend. Egestas egestas fringilla phasellus faucibus scelerisque. Sit amet luctus venenatis lectus.
-                </p>
-                <p>
-                    Vitae aliquet nec ullamcorper sit amet risus. Faucibus in ornare quam viverra. Amet nisl suscipit adipiscing bibendum est. At urna condimentum mattis pellentesque id nibh tortor id aliquet. Ultrices gravida dictum fusce ut. Malesuada fames ac turpis egestas integer eget aliquet.
-                </p>
-                <p>
-                    Nisi est sit amet facilisis magna. Aliquam id diam maecenas ultricies. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Nulla facilisi morbi tempus iaculis. Nibh tortor id aliquet lectus proin. Nisl purus in mollis nunc.
-                </p>
-                <p>
-                    Final paragraph to ensure full height scrolling. Keep scrolling to see the scrollbar work!
-                </p>
-                <!-- END: Filler text for scrolling demonstration -->
-                
-                <!-- Footer/Source Credit is now inside the scrollable content -->
-                <div class="text-center text-xs text-gray-400 pt-10">
-                    <p>Written by NanoGrizz Creative Studio</p>
-                </div>
-            </div>
-        </div>
+    <div class="profile-img">
+      <img src="assets/img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle">
     </div>
+
+    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+      <!-- Uncomment the line below if you also wish to use an image logo -->
+      <!-- <img src="assets/img/logo.png" alt=""> -->
+      <h1 class="sitename">Arens Paño</h1>
+    </a>
+
+    <div class="social-links text-center">
+      <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+      <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+      <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
+      <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+    </div>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
+        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
+        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
+        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in" class="relative object-cover aos-init aos-animate vertical-align:top">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <h2>Arens Paño</h2>
+        <p><span class="typed" data-typed-items="Computer Engineer, Data Scientist, Workforce Analyst">Computer Engineer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About</h2>
+        <p>With a background rooted in engineering principles, I possess strong skills in Python, SQL, and data visualization, enabling me to transform raw data into clear, actionable insights. In my current role as a Workforce Management Analyst, I apply these analytical skills to optimize team efficiency, forecast resource needs, and drive significant operational improvements.
+        </p>
+        <br>
+        <p> I am focused on continuous learning, thrive in dynamic environments, and am committed to utilizing predictive modeling and data-driven methods to enhance business outcomes and build scalable, robust systems.
+        </p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-4">
+            <img src="assets/img/my-profile-img.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-8 content">
+            <h2>Workforce Analyst &amp; Data Specialist.</h2><br>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>June 24</span></li>
+                  <!----<li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>--->
+                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+639776764765</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Philippines</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <!---<li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>30</span></li>--->
+                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor's in Computer engineering</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>sirfaust.o5@gmail.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                </ul>
+              </div>
+            </div>
+            <p class="py-3">
+              
+              I utilize my foundation in Computer Engineering to develop robust, data-driven solutions. By applying predictive analytics and workforce modeling, I don't just solve problems—I engineer optimized environments where efficiency is maximized and future resource needs are anticipated and met.
+
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Stats Section 
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <i class="bi bi-emoji-smile"></i>
+              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
+            </div>
+          </div><!-- End Stats Item 
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <i class="bi bi-journal-richtext"></i>
+              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
+            </div>
+          </div><!-- End Stats Item 
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <i class="bi bi-headset"></i>
+              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
+            </div>
+          </div><!-- End Stats Item 
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <i class="bi bi-people"></i>
+              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
+            </div>
+          </div><!-- End Stats Item 
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Skills</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row skills-content skills-animation">
+
+          <div class="col-lg-6">
+
+            <div class="progress">
+              <span class="skill"><span>Data Analytics and Visualization</span> <i class="val">100%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div><!-- End Skills Item -->
+
+            <div class="progress">
+              <span class="skill"><span>Python</span> <i class="val">80%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div><!-- End Skills Item -->
+
+            <div class="progress">
+              <span class="skill"><span>JavaScript/VB Script</span> <i class="val">85%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div><!-- End Skills Item -->
+
+            <div class="progress">
+              <span class="skill"><span>Predictive Modeling</span> <i class="val">95%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div><!-- End Skills Item -->
+
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="progress">
+              <span class="skill"><span>Workforce Optimization</span> <i class="val">100%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div><!-- End Skills Item -->
+
+            <div class="progress">
+              <span class="skill"><span>Visual Communication</span> <i class="val">95%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div><!-- End Skills Item -->
+
+            <div class="progress">
+              <span class="skill"><span>Technical Troubleshooting</span> <i class="val">100%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div><!-- End Skills Item -->
+
+
+            <div class="progress">
+              <span class="skill"><span>Electronic Prototyping</span> <i class="val">75%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div><!-- End Skills Item -->
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Skills Section -->
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Resume</h2><!-- 
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title">Sumary</h3>
+
+            <div class="resume-item pb-0">
+              <h4>Arens Lopez Paño</h4>
+              <p><em>With almost 4 years as an analyst, I brought a unique versatility to the table, handling everything from technical support infrastructure to strategic workforce planning. </p>
+              <br></btb><p>This blend of technical systems design and business process analysis allows me to ensure that every layer of an organization operates with maximum efficiency and intelligence.</em></p>
+              <br><ul>
+                <li>Cainta, Rizal 1900, Philippines</li>
+                <li>+63 977 676 4765</li>
+                <li>sirfaust.o5@gmail.com</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
+            <h3 class="resume-title">Education</h3>
+            <!--<div class="resume-item">
+              <h4>Master of Fine Arts &amp; Graphic Design</h4>
+              <h5>2015 - 2016</h5>
+              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
+            </div><!-- Edn Resume Item -->
+
+            <div class="resume-item">
+              <h4>Bachelor of Science in Computer Engineering</h4>
+              <h5>2014 - 2019</h5>
+              <p><em>ACCESS Computer Colleges Manila</em></p><br>
+              <p>My engineering education provided a strong technical foundation in digital logic, circuit design, and programming, complemented by core competencies in data structures and systems analysis.</p>
+              <br><p>This academic rigor was immediately paired with significant leadership experience. I am uniquely distinguished as the first student in the ACCESS’ history to serve two consecutive terms as the President of the ACCESS Computer Engineering Organization.</p>
+              <br><p>During this same period, I also held the concurrent role of Editor-in-Chief for ACCESS Newsbyte, the official school paper. Achieving and managing these two high-level positions two years prior to graduation showcases superior organizational skills, influence, and the capacity to lead both technical and communications-focused teams under pressure.</p>
+              <br><p>The Computer Engineering program instilled a robust framework for technical problem-solving and implementation:</p>
+            <ul>
+              <li><b>Systems Design and Integration: </b>Expertise in translating functional requirements into working hardware and software architectures, including microcontroller programming (e.g., Arduino/Raspberry Pi) and sensor integration.</li>
+              <li><b>Digital Logic and Circuit Analysis: </b>Deep understanding of Boolean algebra, VLSI design principles, and PCB layout for building efficient and reliable digital systems.</li>
+              <li><b>Programming Fundamentals: </b>Proficiency in core programming languages (e.g., C++, Assembly) with a focus on algorithmic efficiency and low-level hardware interaction.</li>
+              <li><b>Technical Documentation & Publishing: </b>Developed high-level proficiency in technical writing, editing, and content layout while serving as Editor-in-Chief, ensuring complex information is communicated clearly and professionally.</li>
+              <li><b>Project Management & Team Leadership: </b>Gained practical experience in project lifecycles, resource allocation, and consensus-building through the successful management of a large student organization and a high-frequency publication team.</li>           
+            </ul>
+            </div><!-- Edn Resume Item -->
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="resume-title">Professional Experience</h3>
+            <div class="resume-item">
+              <h4>Workforce Management Real-time Analyst</h4>
+              <h5>2022 - Present</h5>
+              <p><em>TaskUs Inc, Chateau Ridiculous, Quezon City </em></p><br>
+              <ul>
+                <li>Directly managed the real-time performance of over 300+ headcount queue, executing immediate adjustments to staffing (breaks, lunches, auxiliary time) to consistently achieve and exceed Service Level (SL) and Average Handle Time (AHT) goals.</li>
+                <li>Proactively monitored adherence and scheduling systems (e.g., NICE IEX, CMS), identifying and escalating potential risks like high call volume spikes, system outages, and sudden increases in shrinkage to mitigate impacts on customer experience.</li>
+                <li>Synthesized complex, high-velocity operational data into concise, actionable communications for operations and client leadership, enabling rapid, data-backed decisions during peak business intervals.</li>
+                <li>Managed Real-Time Adherence (RTA) monitoring to maintain schedule integrity, ensuring the organization maximizes paid productive hours and minimizes over- and under-staffing.</li>
+                <li>Utilized advanced features in WFM software and Microsoft Excel/Google Sheets to generate rapid "what-if" scenarios for intraday planning, optimizing desk utilization and agent deployment across multiple skill groups.</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
+            <div class="resume-item">
+              <h4>Content Moderator</h4>
+              <h5>2020 - 2022</h5>
+              <p><em>TaskUs Inc, Chateau Ridiculous, Quezon City</em></p>
+              <ul>
+                <li>Applied complex, multi-tiered community guidelines to evaluate sensitive user-generated content across a major social media platform, ensuring compliance with strict platform safety, legal, and operational integrity standards.</li>
+                <li>Maintained expert levels of speed and accuracy while processing a high volume of content, directly contributing to departmental targets for review latency and quality assurance (QA) scores.</li>
+                <li>Analyzed and resolved challenging "gray area" content violations and edge-case escalations, providing detailed rationale and feedback to the training and quality teams to continuously refine policy application.</li>
+                <li>Adhered strictly to data handling protocols and security measures to protect user privacy and sensitive information during the review and moderation process.</li>
+                <li>Developed specialized knowledge in identifying nuanced patterns of harmful content, demonstrating professional judgment and psychological resilience in a fast-paced, high-stakes environment.</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+            
+            <div class="resume-item">
+              <h4>Digital Campaign Operations Specialist</h4>
+              <h5>2019</h5>
+              <p><em>Majorel, Eastwood, Quezon City</em></p>
+              <ul>
+                <li>Provided essential technical support for Microsoft Ads (Bing Ads) campaigns, focusing on accurate setup, deployment, and modification of keywords, ad copy, and bidding parameters to directly impact campaign click-through rates and performance.</li>
+                <li>Executed high-volume, complex data manipulations across multiple client accounts, ensuring data integrity and rapid turnaround for bulk campaign uploads and budget adjustments across the advertising platform.</li>
+                <li>Acted as the crucial technical bridge between Account Managers and the digital platform, quickly translating client strategy into technical platform actions to maintain campaign momentum and client satisfaction.</li>
+                <li>Utilized advanced spreadsheet formulas and macros to streamline repetitive campaign build tasks, significantly reducing the manual time required for large-scale ad account maintenance.</li>
+                <li>Diagnosed and resolved platform errors related to budget constraints, creative policy violations, and reporting discrepancies, ensuring campaigns remained active and fully optimized for delivery.</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
+            <div class="resume-item">
+              <h4>Customer Support Specialist (iHerb.com)</h4>
+              <h5>2018 - 2019</h5>
+              <p><em>One Contact Center, Antel Global Corporate Center, Ortigas Center, Pasig, 1605</em></p>
+              <ul>
+              <li>Handled high-volume, multi-channel customer inquiries (email & chat) related to international shipping, customs clearance, and complex return/exchange policies for a global e-commerce platform.</li>
+              <li>Maintained specialized knowledge of iHerb's diverse health and wellness product catalog and restrictive international importation guidelines, enabling accurate and compliant solutions for customers worldwide.</li>
+              <li>Managed customer accounts from initial contact to resolution, processing sensitive transactions, issuing credits, and coordinating with logistics partners to ensure timely delivery and superior customer satisfaction.</li>
+              <li>Proficiently navigated and utilized multiple internal systems (CRM, Order Management, and Shipping Trackers) simultaneously to diagnose and resolve delivery and billing discrepancies.</li>
+              <li>Consistently met or exceeded key performance indicators (KPIs) including First Call Resolution (FCR) and Customer Satisfaction (CSAT) scores, demonstrating a commitment to both operational efficiency and customer retention.</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
+            <div class="resume-item">
+              <h4>Technical Support Representative (Microsoft Xbox)</h4>
+              <h5>2017 - 2018</h5>
+              <p><em>WCC, Shaw Blvd, Mandaluyong City, 1552</em></p>
+              <ul>
+                <li>Provided expert, Tier-2 level technical support for the Microsoft Xbox ecosystem, solving complex issues related to console hardware failures, network connectivity (NAT/Port Forwarding), software errors, and digital account management.</li>
+                <li>Utilized specialized diagnostic tools and applied a Computer Engineering approach to quickly isolate root causes of system failure (both internal console components and external network configuration).</li>
+                <li>Translated highly technical solutions (e.g., BIOS flashes, modem configuration changes) into clear, step-by-step instructions, resulting in high customer satisfaction (CSAT) scores.</li>
+                <li>Mastered the use of proprietary Microsoft Customer Relationship Management (CRM) and knowledge base tools to document issues accurately and ensure rapid and consistent policy application.</li>
+                <li>Contributed technical insights regarding recurring hardware and software defects to the Quality Assurance team, aiding in the identification of systemic issues for future product iterations.</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Resume Section -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section light-background">
+
+      <!-- Section Title 
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Portfolio</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+      </div><!-- End Section Title 
+
+      <div class="container">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-app">App</li>
+            <li data-filter=".filter-product">Product</li>
+            <li data-filter=".filter-branding">Branding</li>
+            <li data-filter=".filter-books">Books</li>
+          </ul><!-- End Portfolio Filters 
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>App 1</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item 
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/product-1.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Product 1</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/product-1.jpg" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item 
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Branding 1</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item 
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/books-1.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Books 1</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item 
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/app-2.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>App 2</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/app-2.jpg" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/product-2.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Product 2</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/product-2.jpg" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item 
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/branding-2.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Branding 2</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/branding-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item --
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/books-2.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Books 2</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/books-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item --
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/app-3.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>App 3</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/app-3.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item --
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/product-3.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Product 3</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/product-3.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item --
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/branding-3.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Branding 3</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/branding-3.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item --
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/books-3.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Books 3</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/books-3.jpg" title="Branding 3" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item --
+
+          </div><!-- End Portfolio Container --
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Section -->
+
+
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Services</h2>
+        <p>I offer a unique blend of strategic workforce insight, technical implementation, and effective communication, allowing me to provide end-to-end solutions for operational efficiency. Whether you need to optimize your daily operations, gain critical business intelligence through data visualization, or ensure your IT infrastructure is running flawlessly, I provide the precise technical and analytical support required to scale performance.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
+            <div>
+              <h4 class="title"><a class="stretched-link">Workforce Management Consultation</a></h4>
+              <p class="description"><em>Focus: Operational Efficiency, Cost Reduction, and Resource Planning. </em>Leveraging my multi-year experience as a Real-Time Analyst, I provide targeted consultation to help small to mid-sized teams optimize their labor resources and scheduling. I specialize in analyzing current call center or contact center workflows, identifying major drivers of shrinkage and non-adherence, and delivering actionable strategies to maintain Service Level (SL) goals while reducing wasted effort and operational costs.</p>
+            </div>
+          </div>
+          <!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
+            <div>
+              <h4 class="title"><a class="stretched-link">Reports Generation and Data Visualization</a></h4>
+              <p class="description"><em>Focus: Business Intelligence, Data Integrity, and Predictive Modeling. </em>I transform raw organizational data (from databases, WFM tools, or proprietary systems) into clear, impactful business insights. Using advanced techniques in Excel, Google Sheets, and SQL, I design custom dashboards and reports that highlight key performance indicators (KPIs), forecast trends, and enable rapid, informed decision-making across leadership teams.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
+            <div>
+              <h4 class="title"><a class="stretched-link">Technical and Customer Support <b>STILL AVAILABLE</b></a></h4>
+              <p class="description"><em>Focus: User Support, Multi-Channel Communication, and System Diagnostics. </em>Available for part-time, off-hours technical support on an agreed-upon schedule. I provide expert-level, Tier-2 support for your customers, handling complex issues related to software, networking, and product troubleshooting. This service ensures your customers receive prompt, high-quality resolution during high-demand periods without the overhead of full-time staffing.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="icon flex-shrink-0"><i class="bi bi-binoculars"></i></div>
+            <div>
+              <h4 class="title"><a class="stretched-link">Overall Hardware Support</a></h4>
+              <p class="description"><Em>Focus: IT Maintenance, System Assembly, and Computer Repair.</Em>Comprehensive remote and on-site support for maintaining the integrity and performance of your technical assets. Services include expert computer repairs, system reformatting, hardware diagnostics, virus removal, and custom PC assembly. This ensures minimal downtime for key personnel and maximizes the lifespan of essential company equipment.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon flex-shrink-0"><i class="bi bi-brightness-high"></i></div>
+            <div>
+              <h4 class="title"><a class="stretched-link">Technical Writing</a></h4>
+              <p class="description"><em>Focus: Documentation, Policy Creation, and Content Editing. </em>Drawing on my background as an Editor-in-Chief, I create precise, easy-to-understand technical documentation and process guides. This service is essential for converting complex technical concepts (like IT protocols or internal policy guidelines) into clear, standardized manuals, ensuring organizational knowledge transfer is accurate and efficient.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
+            <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week"></i></div>
+            <div>
+              <h4 class="title"><a class="stretched-link">Creative Technical Design & Prototyping</a></h4>
+              <p class="description"><em>Focus: Visual Communication, Image Manipulation, and Electronic Prototyping.</em>Bridging engineering and art, I offer services in visual communication design (posters, social media graphics) using professional tools like Photoshop. I also consult on and prototype small-scale electronic solutions and robotics projects, leveraging my Computer Engineering background to deliver practical, custom-built devices and proof-of-concept solutions.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- Testimonials Section --
+    <section id="testimonials" class="testimonials section light-background">
+
+      <!-- Section Title --
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Testimonials</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title --
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 40
+                },
+                "1200": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 1
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <h3>Saul Goodman</h3>
+                <h4>Ceo &amp; Founder</h4>
+              </div>
+            </div><!-- End testimonial item --
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <h3>Sara Wilsson</h3>
+                <h4>Designer</h4>
+              </div>
+            </div><!-- End testimonial item --
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                <h3>Jena Karlis</h3>
+                <h4>Store Owner</h4>
+              </div>
+            </div><!-- End testimonial item --
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                <h3>Matt Brandon</h3>
+                <h4>Freelancer</h4>
+              </div>
+            </div><!-- End testimonial item --
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                <h3>John Larson</h3>
+                <h4>Entrepreneur</h4>
+              </div>
+            </div><!-- End testimonial item --
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-5">
+
+            <div class="info-wrap">
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h3>Address</h3>
+                  <p>Cainta, Rizal 1900</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3>Call Us</h3>
+                  <p>+63 977 676 4765</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3>Email Us</h3>
+                  <p>sirfaust.o5@gmail.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d73281.64808250923!2d121.08565946982421!3d14.589810198545727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b87f701edd6b%3A0xe1c1fe496d818869!2sCainta%2C%20Rizal!5e1!3m2!1sen!2sph!4v1760951104620!5m2!1sen!2sph" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <label for="name-field" class="pb-2">Your Name</label>
+                  <input type="text" name="name" id="name-field" class="form-control" required="">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="email-field" class="pb-2">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email-field" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <label for="subject-field" class="pb-2">Subject</label>
+                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <label for="message-field" class="pb-2">Message</label>
+                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                  <button type="submit">Send Message</button>
+                </div>
+
+              </div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p>
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
 </body>
+
 </html>
